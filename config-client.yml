@@ -1,0 +1,36 @@
+#客户端配置
+spring:
+  profiles:
+  active: dev
+
+
+---
+spring:
+  profiles: dev
+  application:
+    name: springcloud-provider-configTest-dev
+server:
+  port: 8201
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/
+  instance:
+    instance-id: springcloud-config-8201 #修改监控页面上默认显示信息，
+    prefer-ip-address: true #显示eureka监控页面该模块显示的ip，默认是false
+    
+---
+spring:
+  profiles: test
+  application:
+    name: springcloud-provider-configTest-test
+server:
+  port: 8202
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+---
